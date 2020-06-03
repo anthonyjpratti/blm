@@ -1,0 +1,84 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>BLM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        html,
+        body,
+        main {
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        main {
+            font-family: 'Roboto', sans-serif;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            /* 526s == 8m46s */
+            -webkit-transition: background-color 526s linear;
+            -moz-transition: background-color 526s linear;
+            -o-transition: background-color 526s linear;
+            transition: background-color 526s linear;
+        }
+
+        #time {
+            font-size: 30rem;
+            font-style: bold;
+            text-shadow: 0px 0px 0px black;
+            -webkit-transition: text-shadow 100s linear;
+            -moz-transition: text-shadow 100s linear;
+            -o-transition: text-shadow 100s linear;
+            transition: text-shadow 100s linear;
+        }
+
+        .start {
+            background-color: black;
+        }
+
+        .end {
+            text-shadow: 0px 0px 3px white !important;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            var main = document.getElementById("main");
+            main.className = "start";
+            var time = document.getElementById("time");
+            setTimeout(function () { time.className = "end"; }, 326000);
+            var start = new Date();
+            var interval = setInterval(tick, 100);
+            setInterval
+            function tick() {
+                var ms = (new Date() - start);
+                var seconds = Math.trunc(ms / 1000);
+                if (ms > 526000) {
+                    clearInterval(interval)
+                    ms = 526000;
+                }
+                var minutes = Math.trunc(seconds / 60);
+                seconds = seconds % 60
+                if (seconds < 10) {
+                    seconds = "0" + seconds;
+                }
+                time.innerText = minutes + ":" + seconds;
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <main id="main">
+        <div id="time">0:00</div>
+    </main>
+</body>
+
+</html>
